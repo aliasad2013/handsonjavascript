@@ -1,28 +1,35 @@
 export class Stack {
-    private top = 0;
-    private items = [];
+    private wmkey = {};
+    private items = new WeakMap();
 
-    constructor() { }
+    constructor() {
+        this.items.set(this.wmkey, []);
+    }
 
     push(element) {
-        this.items[top++] = element;
+        let stack = this.items.get(this.wmkey);
+        stack.push(element);
     }
 
     pop() {
-        return this.items[--this.top];
+        let stack = this.items.get(this.wmkey);
+        return stack.pop();
     }
 
     peek() {
-        return this.items[this.top - 1];
+        let stack = this.items.get(this.wmkey);
+        return stack[stack.length - 1];
     }
 
-    clear() { }
+    clear() {
+        this.items.set(this.wmkey, []);
+    }
 
     print() {
         console.log(this.peek());
     }
 
     size() {
-        return this.top;
+        return this.items.get(this.wmkey).length;
     }
 }
