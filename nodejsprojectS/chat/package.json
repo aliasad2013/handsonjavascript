@@ -1,0 +1,27 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "app to demo priority queues",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "start": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "priority queue"
+  },
+  "keywords": [
+    "app",
+    "to",
+    "demo",
+    "priority",
+    "queues"
+  ],
+  "author": "ali",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}
