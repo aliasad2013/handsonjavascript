@@ -1,0 +1,65 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<!-- <h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul> -->
+
+<router-outlet></router-outlet>
+<form>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Company Name">
+  </mat-form-field>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="First Name">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Last Name">
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+  <p>
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Address"></textarea>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Address 2"></textarea>
+    </mat-form-field>
+  </p>
+
+  <table class="full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="City">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="State">
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width">
+          <input matInput #postalCode maxlength="5" placeholder="Postal Code">
+          <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+</form>
