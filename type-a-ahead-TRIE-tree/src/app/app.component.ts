@@ -42,6 +42,7 @@ export class AppComponent {
     });
   }
   search(key) {
+    //console.log(key, this.trie);
     this.searchResp = this.trie.search(key).remainder;
   }
 }

@@ -23,6 +23,9 @@ export class TrieService {
     while (currentNode[curChar] && curChar) {
       currentNode = currentNode[curChar];
 
+      // update the remainder array, this will exist as we added the node earlier
+      currentNode.remainder.push(input);
+
       // trim input
       curChar = input.slice(0, 1);
       input = input.slice(1);
@@ -31,7 +34,9 @@ export class TrieService {
 
     while (curChar) {
       // new references in each loop
-      nextNode = {};
+      nextNode = {
+        remainder: [input]
+      };
 
       // assign to current tree next node
       currentNode[curChar] = nextNode;
@@ -53,7 +58,7 @@ export class TrieService {
 
     // take first charachter
     input = input.slice(1);
-
+    console.log(input, curChar, currentNode[curChar]);
     // keep extracting the sub-tree based on the current charachter
     while (currentNode[curChar] && curChar) {
       currentNode = currentNode[curChar];
@@ -63,11 +68,12 @@ export class TrieService {
     // reached the end and no subtree found
     // e.g; no data found
     if (curChar && !currentNode[curChar]) {
-      return {};
+      return {
+        remainder: []
+      };
     }
 
     // return the node found
-
     return currentNode;
   }
 }
