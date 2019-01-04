@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TrackerService } from "./tracker/tracker.service";
 
 @Component({
   selector: 'app-root',

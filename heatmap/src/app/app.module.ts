@@ -6,10 +6,13 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material';
+import { TrackerService } from "./tracker/tracker.service";
+import { TrackerDirective } from './directives/tracker.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TrackerDirective
   ],
   imports: [
     BrowserModule,
@@ -19,7 +22,7 @@ import { MatInputModule } from '@angular/material';
     BrowserAnimationsModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [TrackerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
