@@ -1,0 +1,17 @@
+{
+  "name": "graphnodeapp",
+  "version": "1.0.0",
+  "description": "A middleware app for Graph Data Structure Implementation for Job portal reference generator.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11"
+  }
+}
