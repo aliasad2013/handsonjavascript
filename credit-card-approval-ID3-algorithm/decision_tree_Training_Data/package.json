@@ -1,0 +1,14 @@
+{
+  "name": "decision_tree_training_data",
+  "version": "1.0.0",
+  "description": "Script to generate the training data for the credit card approval predictor project.",
+  "main": "data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
