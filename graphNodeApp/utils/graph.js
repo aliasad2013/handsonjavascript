@@ -14,6 +14,9 @@ class Graph {
     }
 
     shortestPath(sourceUser, targetCompany) {
+
+        console.log('starting the shortest path determination');
+
         // final shortest Path
         var shortestPath;
 
@@ -23,8 +26,12 @@ class Graph {
         // queue of users being visited
         var queue = [sourceUser];
 
+        console.log(`added ${sourceUser.id} to the queue`);
+
         // mark visited users
         var visitedNodes = [];
+
+        console.log(`marked ${sourceUser.id} as visited`);
 
         // previous path the backtrack steps when shortest path is found
         var prevPath = {};
@@ -44,13 +51,19 @@ class Graph {
             //take user breadth first
             var user = queue[tail];
 
+            console.log(`shortest path not found, moving on to next node in queue: ${user.id}`);
+
             // take nodes forming edges with user
             var friendIds = this.edges[user.id];
+
+            console.log(`extracting neighbor nodes of node ${user.id} (${friendIds})`);
 
             // loop over each node
             _.forEach(friendIds, (friendId) => {
                 //result found in previous iterations, so we can stop
                 if (shortestPath) return;
+
+                console.log(`accessing neighbor ${friendId}`);
 
                 // get all details of node
                 var friend = _.find(this.users, ['id', friendId]);
@@ -58,11 +71,14 @@ class Graph {
                 // if visited already
                 // nothing to rechek so return
                 if (_.includes(visitedNodes, friendId)) {
+                    console.log(`neighbor ${friendId} already visited, return control to top`);
                     return;
                 }
 
                 // mark as visited
                 visitedNodes.push(friendId);
+
+                console.log(`mark ${friendId} as visited`);
 
                 // if company matched
                 if (_.isEqual(friend.company, targetCompany)) {
@@ -70,36 +86,55 @@ class Graph {
                     // create result path with the matched node
                     var path = [friend];
 
+                    console.log(`result found at ${friendId}, add it to result path ([${_.map(path, 'id')}])`);
+
+                    console.log(`backtracking steps to ${sourceUser.id}`);
+
                     //keep backtracking until source user and add to path
                     while (user.id !== sourceUser.id) {
+
+                        console.log(`we got to ${friend.id} from ${user.id}`);
+
                         // add user to shortest path
                         path.unshift(user);
+
+                        console.log(`update path accodingly: ([${_.map(path, 'id')}])`);
 
                         // prepare for next iteration
                         user = prevPath[user.id];
                     }
-
+                    console.log(`add source user ${user.id} to result`);
                     // add source user to the path
                     path.unshift(user);
 
                     // format and return shortestPath
                     shortestPath = _.map(path, 'name').join(' -> ');
+                    console.log(`form result [${_.map(path, 'id')}]`);
                 }
                 //break loop if shortestPath found
-                if (shortestPath) { return; }
+                if (shortestPath) {
+                    console.log(`return result`);
+                    return;
+                }
 
                 //no match found at current user,
                 // add it to previous path to help backtracking later
                 prevPath[friend.id] = user;
 
+                console.log(`result not found, mark our path from ${user.id} to ${friend.id}`);
+
                 // add to queue in the order of visit
                 // i.e. breadth wise for next iteration
                 queue.push(friend);
-            });
 
+                console.log(`result not found, add ${friend.id} to queue for next iteration`);
+                console.log(`current queue content : ${_.map(queue, 'id')}`);
+            });
             // increment counter
             tail++;
+            console.log(`    increment tail to ${tail}`);
         }
+        console.log(`return result ${shortestPath}`);
         return shortestPath || `No path between ${sourceUser.name} & ${targetCompany}`;
     }
 }
