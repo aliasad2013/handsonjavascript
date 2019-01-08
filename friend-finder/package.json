@@ -1,0 +1,27 @@
+{
+  "name": "friend-finder",
+  "version": "1.0.0",
+  "description": "Personalized page rank algorithm implementation using graph data structure",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: n/o test specified\" && exit 1"
+  },
+  "keywords": [
+    "page",
+    "rank",
+    "algorithm",
+    "graph",
+    "data",
+    "structure",
+    "friend",
+    "finder"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "lodash": "^4.17.11"
+  }
+}
