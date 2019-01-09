@@ -12,7 +12,7 @@ class ArrayClass {
     }
 
     clear() {
-        for (let count = 0; count < numElements; count++) {
+        for (let count = 0; count < this.dataStore.length; count++) {
             this.dataStore[count] = 0;
         }
     }

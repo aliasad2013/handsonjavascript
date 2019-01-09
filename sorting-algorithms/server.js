@@ -33,7 +33,20 @@ function compareBasicSortingAlgorithms(numOfElementsforSorting) {
 
 //compareBasicSortingAlgorithms(1000);
 
-let shellsortobj = new shellsort(100);
-console.log(shellsortobj.sort());
 
+let start = new Date().getTime();
+let shellsortobj = new shellsort(100000);
+shellsortobj.sort();
+let stop = new Date().getTime();
+let elapsed = stop - start;
+console.log("Shellsort with hard-coded gap sequence: " + elapsed + " ms.");
+
+
+start = new Date().getTime();
+shellsortobj.dataSet.clear()
+shellsortobj.dataSet.setData();
+shellsortobj.sortwithgap();
+stop = new Date().getTime();
+elapsed = stop - start;
+console.log("Shellsort with dynamic gap sequence: " + elapsed + " ms.");
 
