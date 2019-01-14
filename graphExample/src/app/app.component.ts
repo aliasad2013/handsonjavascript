@@ -19,7 +19,7 @@ export class AppComponent {
     g.vertexList = ['CS1', 'CS2', 'Data Structures',
       'Assembly Language', 'Operating Systems',
       'Algorithms'];
-    g.showGraph();
+    //g.showGraph();
     g.topSort();
     // let vertex = 4;
     // let paths = g.shortestPathTo(vertex);

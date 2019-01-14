@@ -13,6 +13,12 @@ class Graph {
         });
     }
 
+
+
+
+    /**
+     * following function implements shortest path using BFS
+     */
     shortestPath(sourceUser, targetCompany) {
 
         console.log('starting the shortest path determination');
@@ -26,12 +32,12 @@ class Graph {
         // queue of users being visited
         var queue = [sourceUser];
 
-        console.log(`added ${sourceUser.id} to the queue`);
+        //console.log(`added ${sourceUser.id} to the queue`);
 
         // mark visited users
         var visitedNodes = [];
 
-        console.log(`marked ${sourceUser.id} as visited`);
+        // console.log(`marked ${sourceUser.id} as visited`);
 
         // previous path the backtrack steps when shortest path is found
         var prevPath = {};
@@ -41,12 +47,10 @@ class Graph {
             return;
         }
 
-        // mark source user as visited so
-        // next time we skip the processing 
+        // mark source user as visited so next time we skip the processing 
         visitedNodes.push(sourceUser.id);
 
-        // loop queue until match is found
-        // OR until the end of the queue i.e; no match
+        // loop queue until match is found OR until the end of the queue i.e; no match
         while (!shortestPath && tail < queue.length) {
             //take user breadth first
             var user = queue[tail];
@@ -123,8 +127,7 @@ class Graph {
 
                 console.log(`result not found, mark our path from ${user.id} to ${friend.id}`);
 
-                // add to queue in the order of visit
-                // i.e. breadth wise for next iteration
+                // add to queue in the order of visit i.e. breadth wise for next iteration
                 queue.push(friend);
 
                 console.log(`result not found, add ${friend.id} to queue for next iteration`);
@@ -132,10 +135,11 @@ class Graph {
             });
             // increment counter
             tail++;
-            console.log(`    increment tail to ${tail}`);
+            console.log(`increment tail to ${tail}`);
         }
-        console.log(`return result ${shortestPath}`);
-        return shortestPath || `No path between ${sourceUser.name} & ${targetCompany}`;
+        console.log(`return result ${shortestPath} `);
+        console.log(`backtracking strategy ${JSON.stringify(prevPath)}`);
+        return { 'shortestPath': shortestPath, 'prevPath': prevPath } || `No path between ${sourceUser.name} & ${targetCompany}`;
     }
 }
 module.exports = Graph;

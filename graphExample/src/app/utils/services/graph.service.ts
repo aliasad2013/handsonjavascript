@@ -122,7 +122,7 @@ export class GraphService {
     }
     for (let count = 0; count < stack.length; count++) {
       if (stack[count] !== undefined && stack[count] !== false) {
-        console.log(this.vertexList[stack[count]]);
+        console.log(this.vertexList[stack.pop()]);
       }
     }
   }
