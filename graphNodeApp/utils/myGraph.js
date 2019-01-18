@@ -1,3 +1,4 @@
+var _ = require('lodash');
 class MyGraph {
     constructor(numberOfVertices) {
         this.adjacencyList = new Array(numberOfVertices);
@@ -93,21 +94,37 @@ class MyGraph {
 
     largetConnectedCellSolution() {
         let vertex = 0;
+        console.log(this.grid);
         this.adjacencyList.forEach((vertex, index) => {
-            this.traverseGridUsingDFS(vertex);
+            this.traverseGridUsingDFS(index);
+            console.log(`visited Nodes -> ${this.grid[index]}`);
         });
+        let maxCount = 0;
+        let result = "";
+        Object.entries(this.result).forEach((value) => {
+            console.log(value);
+            if (value[1] > maxCount) {
+                maxCount = value[1];
+                result = value[0];
+            }
+        })
 
         console.log("working on it" + JSON.stringify(this.result));
+        console.log(`the color with the largest region is ${result} and the count -> ${maxCount}`);
     }
 
     traverseGridUsingDFS(vertex) {
+
         if (this.visitedNodes[vertex] === true) return;
         this.adjacencyList[vertex].forEach((value) => {
+            console.log(`vertex ${value} -> ${this.grid[value]}`);
+            if (this.visitedNodes[value] == true) return;
+            if (!this.result[this.grid[value]]) {
+                this.result[this.grid[value]] = 1;
+            }
             if (this.grid[value] == this.grid[vertex]) {
                 this.visitedNodes[vertex] = true;
-                if (!this.result[this.grid[value]]) {
-                    this.result[this.grid[value]] = 1;
-                }
+
                 this.result[this.grid[value]] += 1;
                 this.traverseGridUsingDFS(value);
             }
