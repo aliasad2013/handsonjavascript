@@ -28,7 +28,7 @@ function LongestCommonSubstring(word1, word2) {
         for (let i = index - max; i <= max; ++i) {
             str += word2[i];
         }
-        return str;
+        return str.length;
     }
 
 }
