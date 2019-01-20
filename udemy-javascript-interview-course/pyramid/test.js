@@ -35,3 +35,13 @@ test('prints a pryamid for n = 4', () => {
     expect(console.log.mock.calls[3][0]).toEqual('#######');
     expect(console.log.mock.calls.length).toEqual(4);
 });
+
+test('prints a pryamid for n = 15', () => {
+    pyramid(15);
+    expect(console.log.mock.calls.length).toEqual(15);
+});
+
+test('prints a pryamid for n = 20', () => {
+    pyramid(20);
+    expect(console.log.mock.calls.length).toEqual(20);
+});
