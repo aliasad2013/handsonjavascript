@@ -27,6 +27,8 @@ class Tree {
     constructor() {
         this.root = null;
     }
+
+    // BFS=push & DFS = unshift
     //In BFS we take children of each node and PUSH them into the end of array.
     traverseBF(fn) {
         let arr = [this.root];
@@ -42,6 +44,7 @@ class Tree {
         let arr = [this.root];
         while (arr.length > 0) {
             const node = arr.shift();
+            //Followingline is the core differnce between BFS & DFS
             arr.unshift(...node.children);
             fn(node);
         }
