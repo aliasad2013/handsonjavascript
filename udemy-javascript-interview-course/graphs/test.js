@@ -57,3 +57,22 @@ test('Testing graph traversal using DFS Iterative version', () => {
     graph.addEdges(4, 5);
     expect(graph.dfs_traverse_Iterative_version(0)).toEqual([0, 1, 3, 4, 5, 2]);
 });
+
+
+test('Testing graph traversal using BFS', () => {
+    let graph = new Graph(5);
+
+    graph.addEdges(1, 2);
+    graph.addEdges(1, 3);
+    graph.addEdges(2, 4);
+    graph.addEdges(2, 5);
+    graph.addEdges(3, 5);
+    graph.addEdges(4, 2);
+    graph.addEdges(4, 5);
+    graph.addEdges(4, 6);
+    graph.addEdges(5, 3);
+    graph.addEdges(5, 4);
+    graph.addEdges(5, 6);
+    console.log(graph.bfs_traverse(1));
+    expect(graph.bfs_traverse(1)).toEqual([1, 2, 3, 4, 5, 6]);
+});

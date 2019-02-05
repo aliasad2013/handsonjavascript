@@ -36,7 +36,6 @@ class graph {
         while (list.length > 0) {
             node = list.shift();
             if (!this.visited[node]) {
-                console.log(node, list);
                 this.visited[node] = true;
                 this.visitedSequence.push(node);
                 if (this.adjList[node]) {
@@ -59,7 +58,7 @@ class graph {
                 this.visited[node] = true;
                 this.visitedSequence.push(node);
                 if (this.adjList[node]) {
-                    list.unshift(...this.adjList[node]);
+                    list.push(...this.adjList[node]);
                 }
             }
         }
